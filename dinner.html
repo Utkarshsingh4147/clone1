@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .updown {
+            animation: updown 4s infinite ease-in-out;
+        }
+
+        @keyframes updown {
+
+            0%,
+            100% {
+                transform: translateY(60px);
+            }
+
+            50% {
+                transform: translateY(-60px);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200 relative">
+    <div
+        class="scanner absolute w-[100vw] h-[100vh] bg-black text-white opacity-70 flex flex-col justify-between items-center p-3 z-10">
+        <div class="text-lg absolute top-2 left-2">X</div>
+        <div class="w-[200px] h-[200px] mt-[50%] bg-white flex flex-col justify-center relative">
+            <img src="image.png" alt="" class="absolute w-[80%] left-[10%] opacity-70">
+            <div class="updown w-full border-2 border-red-500 "></div>
+        </div>
+        <div class="text-sm">
+            Align code within the frame to scan
+        </div>
+    </div>
+
+    <div class="main hidden">
+        <nav class="bg-gray-700 text-white text-md flex justify-between items-center p-3">
+            <div>&nbsp;</div>
+            <div class="flex flex-col justify-center items-center gap-1">
+                <div class="border-3 w-8 rounded border-gray-300"></div>
+                <div>Mess Pass</div>
+            </div>
+            <div><a href="index.html">X</a></div>
+        </nav>
+        <div class="card bg-white m-3 border-2 border-gray-400 rounded-2xl shadow-2xl shadow-black relative ">
+            <div class="part1">
+                <div
+                    class="timer absolute top-2 right-2 bg-gray-400 py-[5px] px-[13px] rounded-2xl shadow-xl text-shadow-xs text-shadow-white font-medium">
+                    40
+                </div>
+                <div class="flex gap-4 pt-5 p-3">
+                    <div class="image">
+                        <img src="me.jpg" alt="img"
+                            class="rounded-[50%] border-1 w-[150px] h-[150px] shadow-lg shadow-gray-600">
+                    </div>
+                    <div class="font-medium text-lg text-shadow-md">
+                        <p class="text-2xl">Dinner</p>
+                        <p>12304147</p>
+                        <p>Utkarsh Singh</p>
+                        <p>Mess-1 BH-1</p>
+                    </div>
+                </div>
+                <div class="flex flex-col px-4 text-lg">
+                    <p>
+                        P132:B.Tech. (Computer Science and Engineering)(2023)
+                    </p>
+                </div>
+                <div class="font-semibold flex justify-between px-8 py-6 text-lg">
+                    <div>Apr 19, 2025</div>
+                    <div>09:02 PM</div>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-lime-500 text-center">Meal Approved</p>
+                </div>
+            </div>
+            <div class="part2 border-20 h-[350px] my-1 flex justify-center items-center relative">
+                <img src="Accepted.gif" alt="Accepted" class="object-cover">
+            </div>
+            <div class="part3 text-sm p-2 text-gray-600 shadow-md text-lg">
+                <div>
+                    <p class="font-medium">Father's Name</p>
+                    <p>Arun Kumar Singh (6394325936)</p>
+                </div>
+                <div>
+                    <p class="font-medium">Mother's Name</p>
+                    <p>Poonam Singh (7905560428)</p>
+                </div>
+                <div>
+                    <p class="font-medium">Session</p>
+                    <p>P132:B.Tech.(Computer Science Engineering)</p>
+                </div>
+                <div>
+                    <p class="font-medium">Hostel</p>
+                    <p>Boys Hostel-01-B912-Bed D (Std Non-AC 4 Seater)</p>
+                </div>
+            </div>
+            <div class="font-medium border-2 rounded-xl mt-7 mb-3 flex justify-around py-2 text-lg">
+                <div>Verification Code</div>
+                <div>11074208</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    window.onload = () => {
+        setTimeout(() => {
+            let scanner = document.querySelector(".scanner")
+            let main = document.querySelector(".main");
+            scanner.classList.add("hidden");
+            main.classList.remove("hidden");
+        }, 4000);
+
+    };
+    // Countdown Timer
+    let timer = 40;
+    const timerElement = document.querySelector(".timer");
+    const countdown = setInterval(() => {
+        timer--;
+        if (timer >= 0) {
+            timerElement.textContent = timer;
+        } else {
+            clearInterval(countdown);
+            timerElement.textContent = "Exp";
+        }
+    }, 1000);
+
+    // Current Date and Time
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-GB', {
+        day: '2-digit', month: 'short', year: 'numeric'
+    }).replace(/ /g, ' ');
+    const timeStr = now.toLocaleTimeString([], {
+        hour: '2-digit', minute: '2-digit', hour12: true
+    });
+
+    document.querySelectorAll(".font-semibold > div")[0].textContent = dateStr;
+    document.querySelectorAll(".font-semibold > div")[1].textContent = timeStr;
+
+    // Random 8-digit Verification Code
+    const verificationCode = Math.floor(10000000 + Math.random() * 10000000);
+    document.querySelector(".font-medium.border-2 div:last-child").textContent = verificationCode;
+</script>
+
+</html>
