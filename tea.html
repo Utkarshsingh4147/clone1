@@ -48,7 +48,7 @@
                 <div class="border-3 w-8 rounded border-gray-300"></div>
                 <div>Mess Pass</div>
             </div>
-            <div><a href="index.html">X</a></div>
+            <div class="switch">X</div>
         </nav>
         <div class="card bg-white m-3 border-2 border-gray-400 rounded-2xl shadow-2xl shadow-black relative ">
             <div class="part1">
@@ -61,7 +61,7 @@
                         <img src="me.jpg" alt="img"
                             class="rounded-[50%] border-1 w-[150px] h-[150px] shadow-lg shadow-gray-600">
                     </div>
-                    <div class="font-medium text-lg text-shadow-md">
+                    <div class="mt-4 font-medium text-lg text-shadow-md">
                         <p class="text-2xl">Tea</p>
                         <p>12304147</p>
                         <p>Utkarsh Singh</p>
@@ -81,7 +81,7 @@
                     <p class="text-2xl font-bold text-lime-500 text-center">Meal Approved</p>
                 </div>
             </div>
-            <div class="part2 border-20 h-[350px] my-1 flex justify-center items-center relative">
+            <div class="part2 border-20 border-emerald-800 h-[350px] my-1 flex justify-center items-center relative">
                 <img src="Accepted.gif" alt="Accepted" class="object-cover">
             </div>
             <div class="part3 text-sm p-2 text-gray-600 shadow-md text-lg">
@@ -132,6 +132,13 @@
             timerElement.textContent = "Exp";
         }
     }, 1000);
+
+    const switchBtn = document.querySelector(".switch");
+    const part2 = document.querySelector(".part2");
+
+    switchBtn.addEventListener("click", () => {
+        part2.classList.toggle("border-red-900"); // toggle Tailwind border color
+    });
 
     // Current Date and Time
     const now = new Date();
