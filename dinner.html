@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinner</title>
+    <title>dinner</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -48,7 +48,7 @@
                 <div class="border-3 w-8 rounded border-gray-300"></div>
                 <div>Mess Pass</div>
             </div>
-            <div class="switch">X</div>
+            <div><a href="index.html">X</a></div>
         </nav>
         <div class="card bg-white m-3 border-2 border-gray-400 rounded-2xl shadow-2xl shadow-black relative ">
             <div class="part1">
@@ -68,7 +68,7 @@
                         <p>Mess-1 BH-1</p>
                     </div>
                 </div>
-                <div class="flex flex-col px-4 text-lg">
+                <div class="flex flex-col px-4">
                     <p>
                         P132:B.Tech. (Computer Science and Engineering)(2023)
                     </p>
@@ -78,10 +78,24 @@
                     <div>09:02 PM</div>
                 </div>
                 <div>
-                    <p class="text-2xl font-bold text-lime-500 text-center">Meal Approved</p>
+                    <p class="text-2xl font-bold text-lime-500 text-center ">Meal Approved</p>
                 </div>
             </div>
-            <div class="part2 border-20 border-emerald-800 h-[350px] my-1 flex justify-center items-center relative">
+
+            <div id="colorPicker"
+            class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-xl shadow-lg p-4 z-20 flex gap-3 flex-wrap w-[220px] justify-center">
+                <div class="w-8 h-8 rounded border cursor-pointer bg-emerald-800" data-color="border-emerald-800"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-red-900" data-color="border-red-900"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-blue-900" data-color="border-blue-900"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-black" data-color="border-black"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-pink-300" data-color="border-pink-300"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-purple-400" data-color="border-purple-400"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-yellow-600" data-color="border-yellow-600"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-yellow-900" data-color="border-yellow-900"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-gray-600" data-color="border-gray-600"></div>
+            </div>
+
+            <div class="part2 border-20 border-emerald-800 h-[380px] my-1 flex justify-center items-center relative">
                 <img src="Accepted.gif" alt="Accepted" class="object-cover">
             </div>
             <div class="part3 text-sm p-2 text-gray-600 shadow-md text-lg">
@@ -133,12 +147,46 @@
         }
     }, 1000);
 
-    const switchBtn = document.querySelector(".switch");
-    const part2 = document.querySelector(".part2");
 
-    switchBtn.addEventListener("click", () => {
-        part2.classList.toggle("border-red-900"); // toggle Tailwind border color
+    // ...existing code...
+    const part2 = document.querySelector(".part2");
+    const colorPicker = document.getElementById("colorPicker");
+
+    // Show color picker when border is clicked
+    part2.addEventListener("click", (e) => {
+        // Only trigger if clicked on border area (not image)
+        if (e.target === part2) {
+            colorPicker.classList.remove("hidden");
+        }
     });
+
+    // Change border color on color selection
+    colorPicker.addEventListener("click", (e) => {
+        if (e.target.dataset.color) {
+            // Remove any previous border color classes
+            part2.classList.remove(
+                "border-blue-900",
+                "border-black",
+                "border-pink-300",
+                "border-gray-600",
+                "border-red-900",
+                "border-emerald-800",
+                "border-yellow-900",
+                "border-yellow-600",
+                "border-purple-400"
+            );
+            part2.classList.add(e.target.dataset.color);
+            colorPicker.classList.add("hidden");
+        }
+    });
+
+    // Optional: Hide color picker if clicked outside
+    document.addEventListener("click", (e) => {
+        if (!colorPicker.classList.contains("hidden") && !colorPicker.contains(e.target) && e.target !== part2) {
+            colorPicker.classList.add("hidden");
+        }
+    });
+    // ...existing code...
 
     // Current Date and Time
     const now = new Date();
