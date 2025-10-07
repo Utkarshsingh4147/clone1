@@ -61,14 +61,14 @@
                         <img src="me.jpg" alt="img"
                             class="rounded-[50%] border-1 w-[150px] h-[150px] shadow-lg shadow-gray-600">
                     </div>
-                    <div class="mt-4 font-medium text-lg text-shadow-md">
+                    <div class="mt-4 font-medium text-[16px] text-shadow-lg">
                         <p class="text-2xl">Dinner</p>
                         <p>12304147</p>
                         <p>Utkarsh Singh</p>
                         <p>Mess-1 BH-1</p>
                     </div>
                 </div>
-                <div class="flex flex-col px-4">
+                <div class="flex flex-col px-4 text-[16px] font-medium  mb-2">
                     <p>
                         P132:B.Tech. (Computer Science and Engineering)(2023)
                     </p>
@@ -85,13 +85,15 @@
             <div id="colorPicker"
             class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-xl shadow-lg p-4 z-20 flex gap-3 flex-wrap w-[220px] justify-center">
                 <div class="w-8 h-8 rounded border cursor-pointer bg-emerald-800" data-color="border-emerald-800"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-lime-600/85" data-color="border-lime-600/85"></div>
                 <div class="w-8 h-8 rounded border cursor-pointer bg-red-900" data-color="border-red-900"></div>
-                <div class="w-8 h-8 rounded border cursor-pointer bg-blue-900" data-color="border-blue-900"></div>
-                <div class="w-8 h-8 rounded border cursor-pointer bg-black" data-color="border-black"></div>
-                <div class="w-8 h-8 rounded border cursor-pointer bg-pink-300" data-color="border-pink-300"></div>
-                <div class="w-8 h-8 rounded border cursor-pointer bg-purple-400" data-color="border-purple-400"></div>
-                <div class="w-8 h-8 rounded border cursor-pointer bg-yellow-600" data-color="border-yellow-600"></div>
                 <div class="w-8 h-8 rounded border cursor-pointer bg-yellow-900" data-color="border-yellow-900"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-black" data-color="border-black"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-blue-900" data-color="border-blue-900"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-fuchsia-900" data-color="border-fuchsia-900"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-purple-400" data-color="border-purple-400"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-pink-300" data-color="border-pink-300"></div>
+                <div class="w-8 h-8 rounded border cursor-pointer bg-yellow-600" data-color="border-yellow-600"></div>
                 <div class="w-8 h-8 rounded border cursor-pointer bg-gray-600" data-color="border-gray-600"></div>
             </div>
 
@@ -171,9 +173,11 @@
                 "border-gray-600",
                 "border-red-900",
                 "border-emerald-800",
+                "border-lime-600/85",
                 "border-yellow-900",
                 "border-yellow-600",
-                "border-purple-400"
+                "border-purple-400",
+                "border-fuchsia-900"
             );
             part2.classList.add(e.target.dataset.color);
             colorPicker.classList.add("hidden");
@@ -190,7 +194,7 @@
 
     // Current Date and Time
     const now = new Date();
-    const dateStr = now.toLocaleDateString('en-GB', {
+    const dateStr = now.toLocaleDateString('en-US', {
         day: '2-digit', month: 'short', year: 'numeric'
     }).replace(/ /g, ' ');
     const timeStr = now.toLocaleTimeString([], {
